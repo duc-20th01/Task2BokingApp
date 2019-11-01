@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_allpost"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/all_post_list" />
+        <item
+            android:id="@+id/nav_personalpost"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/personal_post" />
+    </group>
+
+    <item android:title="@string/account">
+        <menu>
+            <item
+                android:id="@+id/nav_edit"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/edit_profile" />
+            <item
+                android:id="@+id/nav_changepw"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/change_password" />
+        </menu>
+    </item>
+
+</menu>
