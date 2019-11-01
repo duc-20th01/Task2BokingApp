@@ -1,6 +1,11 @@
 package com.example.bookingapp.api;
 
+import com.example.bookingapp.models.Post;
+
+import java.util.ArrayList;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -9,13 +14,16 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
-    @POST("sample/add")
+    @POST("post/add")
+    Call<String> add(@Body Post post);
 
-    @GET("sample/list")
+    @GET("post/list")
+    Call<ArrayList<Post>> getAll();
 
-    @PUT("sample/update")
+    @PUT("post/update")
+    Call<String> update(@Body Post post);
 
-    @DELETE("sample/delete")
+    @DELETE("post/delete")
     Call<String> delete(@Query("id") int id);
 
 }
