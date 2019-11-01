@@ -17,16 +17,16 @@
             android:name="com.example.bookingapp.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/NoActionBar">
+
+
+        </activity>
+        <activity android:name="com.example.bookingapp.Rigister" />
+        <activity android:name="com.example.bookingapp.Login" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-        <activity android:name="com.example.bookingapp.Rigister" />
-        <activity android:name="com.example.bookingapp.Login" >
-
         </activity>
     </application>
 
