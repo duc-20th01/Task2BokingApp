@@ -22,11 +22,12 @@ import com.example.bookingapp.model.Post;
 
 import java.util.ArrayList;
 
+
 public class PersonalPost extends Fragment {
 
     private PersonalPostViewModel mViewModel;
     private PersonalPostViewModel personalPostViewModel;
-    private ArrayList <Post>postList;
+    private ArrayList<Post> postList;
     private PostAdapter postAdapter;
     private ListView lvPost;
     private FloatingActionButton fabAddPost;

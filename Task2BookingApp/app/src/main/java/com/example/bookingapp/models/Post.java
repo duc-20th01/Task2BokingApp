@@ -1,20 +1,37 @@
 package com.example.bookingapp.models;
 
-import java.io.Serializable;
+public class Post {
+    private int id;
+    private String name;
+    private String skill;
+    private String description;
+    private int quantity;
+    private String address;
+    private String createdDate;
+    private String authorId;
 
-public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(int id, String name, String skill, String descreption, int quantity, String address, String createdDate, String email) {
-        this.id = id;
+    public Post(String name, String skill, String description, int quantity, String address, String createdDate, String authorId) {
         this.name = name;
         this.skill = skill;
-        this.descreption = descreption;
+        this.description = description;
         this.quantity = quantity;
         this.address = address;
         this.createdDate = createdDate;
-        this.email = email;
+        this.authorId = authorId;
+    }
+
+    public Post(int id, String name, String skill, String description, int quantity, String address, String createdDate, String authorId) {
+        this.id = id;
+        this.name = name;
+        this.skill = skill;
+        this.description = description;
+        this.quantity = quantity;
+        this.address = address;
+        this.createdDate = createdDate;
+        this.authorId = authorId;
     }
 
     public int getId() {
@@ -41,12 +58,12 @@ public class Post implements Serializable {
         this.skill = skill;
     }
 
-    public String getDescreption() {
-        return descreption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescreption(String descreption) {
-        this.descreption = descreption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getQuantity() {
@@ -73,20 +90,11 @@ public class Post implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAuthorId() {
+        return authorId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
     }
-
-    private int id;
-    private String name;
-    private String skill;
-    private String descreption;
-    private int quantity;
-    private String address;
-    private String createdDate;
-    private String email;
 }

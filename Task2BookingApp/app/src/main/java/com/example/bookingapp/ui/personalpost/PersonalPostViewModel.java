@@ -1,9 +1,9 @@
 package com.example.bookingapp.ui.personalpost;
 
+
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
-
 import com.example.bookingapp.model.Post;
 
 import java.util.ArrayList;

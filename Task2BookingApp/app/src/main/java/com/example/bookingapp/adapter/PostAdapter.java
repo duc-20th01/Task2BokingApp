@@ -1,49 +1,76 @@
 package com.example.bookingapp.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.bookingapp.R;
-import com.example.bookingapp.models.Post;
+import com.example.bookingapp.model.Post;
 
 import java.util.ArrayList;
 
-public class PostAdapter extends ArrayAdapter<Post> {
-    Context context;
-    ArrayList<Post> arrayList;
-    int layoutResource;
+public class PostAdapter extends BaseAdapter {
+    private Context context;
+    private int layout;
+    private ArrayList<Post> postList;
 
-    public PostAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Post> objects) {
-        super(context, resource, objects);
+    public PostAdapter(Context context, int layout, ArrayList<Post> postList) {
         this.context = context;
-        this.arrayList = objects;
-        this.layoutResource = resource;
+        this.layout = layout;
+        this.postList = postList;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        convertView = inflater.inflate(layoutResource, null);
-        TextView txt1 = convertView.findViewById(R.id.tv_Name);
-        txt1.setText(arrayList.get(position).getName());
-        TextView txt2 = convertView.findViewById(R.id.tv_skill);
-        txt2.setText(arrayList.get(position).getSkill());
-        TextView txt3 = convertView.findViewById(R.id.tv_desc);
-        txt2.setText(arrayList.get(position).getDescreption());
-        TextView txt4 = convertView.findViewById(R.id.tv_quant);
-        txt2.setText(arrayList.get(position).getQuantity());
-        TextView txt5 = convertView.findViewById(R.id.tv_address);
-        txt2.setText(arrayList.get(position).getAddress());
-        TextView txt6 = convertView.findViewById(R.id.tv_date);
-        txt2.setText(arrayList.get(position).getCreatedDate());
-        TextView txt7 = convertView.findViewById(R.id.tv_email);
-        txt2.setText(arrayList.get(position).getEmail());
-        return convertView;
+    public int getCount() {
+        return postList.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if (view == null){
+            view = inflater.inflate(layout, null);
+            viewHolder = new ViewHolder();
+            viewHolder.txtName = view.findViewById(R.id.txtName);
+            viewHolder.txtSkill = view.findViewById(R.id.txtSkill);
+            viewHolder.txtDescription = view.findViewById(R.id.txtDescription);
+            viewHolder.txtQuantity = view.findViewById(R.id.txtQuantity);
+            viewHolder.txtAddress = view.findViewById(R.id.txtAddress);
+            viewHolder.txtCreateDate = view.findViewById(R.id.txtCreatedDate);
+            viewHolder.txtAuthor = view.findViewById(R.id.txtAuthor);
+            view.setTag(viewGroup);
+        }else {
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        if (postList.size() > 0){
+            Post post = postList.get(i);
+            viewHolder.txtName.setText("Name: ".concat(post.getName()));
+            viewHolder.txtSkill.setText("Skill: ".concat(post.getSkill()));
+            viewHolder.txtDescription.setText("Description: ".concat(post.getDescription()));
+            viewHolder.txtQuantity.setText("Quantity: ".concat(String.valueOf(post.getQuantity())));
+            viewHolder.txtAddress.setText("Address: ".concat(post.getAddress()));
+            viewHolder.txtCreateDate.setText("Created date: ".concat(post.getCreatedDate()));
+            viewHolder.txtAuthor.setText("Author: ".concat(post.getAuthorId()));
+        }
+
+        return view;
+    }
+    public class ViewHolder{
+        TextView txtName, txtSkill, txtDescription, txtQuantity, txtAddress, txtCreateDate, txtAuthor;
     }
 }
