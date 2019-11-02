@@ -1,6 +1,6 @@
 package com.example.bookingapp.api;
 
-import com.example.bookingapp.models.Post;
+import com.example.bookingapp.model.Post;
 
 import java.util.ArrayList;
 
