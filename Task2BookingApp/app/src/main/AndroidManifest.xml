@@ -25,6 +25,7 @@
         </activity>
         <activity android:name="com.example.bookingapp.Rigister" />
         <activity android:name="com.example.bookingapp.Login"></activity>
+        <activity android:name="com.example.bookingapp.NewPostActivity"/>
     </application>
 
 </manifest>

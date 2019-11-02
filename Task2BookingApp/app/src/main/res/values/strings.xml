@@ -40,4 +40,18 @@
     <string name="hint_confirm_pwd">Enter password again</string>
     <!--ChangePwd-->
 
+    <!--new post-->
+    <string name="new_post">NEW POST</string>
+    <string name="post_title">Title</string>
+    <string name="post_skill">Skill</string>
+    <string name="post_descripton">Description</string>
+    <string name="post_quantity">Quantity</string>
+    <string name="post_address">Address</string>
+    <string name="button_add">Add</string>
+    <string name="hint_enter_titile">Enter post title</string>
+    <string name="hint_enter_skill">Enter skill</string>
+    <string name="hint_enter_description">Enter description</string>
+    <string name="hint_enter_quantity">Enter quantity</string>
+    <string name="hint_enter_address">Enter address</string>
+
 </resources>
