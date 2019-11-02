@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.bookingapp.R;
 
@@ -20,6 +22,7 @@ public class EditProfile extends Fragment {
 
     private EditProfileViewModel mViewModel;
     private Spinner spinnerDanhSach;
+    private RadioButton btTruong,btCongTy;
 
     public static EditProfile newInstance() {
         return new EditProfile();
@@ -28,12 +31,18 @@ public class EditProfile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_edit_profile, container, false);
-        /*spinnerDanhSach = (Spinner) root.findViewById(R.id.spDoiTuong);
-        ArrayList<String> list =new ArrayList<>();
-        list.add("Công Ty");
-        list.add("Nhà trường");
-        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_list_item,list);
-        spinnerDanhSach.setAdapter(adapter);*/
+        btTruong = (RadioButton) root.findViewById(R.id.rbTruong);
+        btCongTy = (RadioButton) root.findViewById(R.id.rbCongTy);
+        btTruong.setChecked(true);
+        if(btTruong.isChecked()==true){
+            Toast.makeText(getActivity(), "Truong", Toast.LENGTH_SHORT).show();
+            btTruong.setChecked(false);
+            btCongTy.setChecked(true);
+        }
+        else {
+            Toast.makeText(getActivity(), "Deo phai r", Toast.LENGTH_SHORT).show();
+        }
+
         return root;
 
     }
