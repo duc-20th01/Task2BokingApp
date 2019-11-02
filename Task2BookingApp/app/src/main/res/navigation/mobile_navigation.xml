@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/nav_personalpost"
         android:name="com.example.bookingapp.ui.personalpost.PersonalPost"
-        android:label="@string/menu_gallery"
+        android:label="Personal Post"
         tools:layout="@layout/fragment_personal_post" />
 
     <fragment
         android:id="@+id/nav_edit"
         android:name="com.example.bookingapp.ui.editprofile.EditProfile"
-        android:label="@string/menu_share"
+        android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
 
     <fragment
         android:id="@+id/nav_changepw"
         android:name="com.example.bookingapp.ui.changepassword.ChangPassword"
-        android:label="@string/menu_send"
+        android:label="Change Password"
         tools:layout="@layout/fragment_chang_password" />
 </navigation>
