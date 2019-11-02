@@ -2,6 +2,7 @@ package com.example.bookingapp.ui.personalpost;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.bookingapp.NewPostActivity;
 import com.example.bookingapp.R;
 import com.example.bookingapp.adapter.PostAdapter;
 import com.example.bookingapp.model.Post;
@@ -73,7 +75,8 @@ public class PersonalPost extends Fragment {
                 //
                 //  pass
                 //
-                Toast.makeText(getActivity(), "Click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), NewPostActivity.class);
+                startActivity(intent);
             }
         });
 
