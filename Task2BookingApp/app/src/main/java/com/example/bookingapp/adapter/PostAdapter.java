@@ -47,4 +47,3 @@ public class PostAdapter extends ArrayAdapter<Post> {
         return convertView;
     }
 }
-
