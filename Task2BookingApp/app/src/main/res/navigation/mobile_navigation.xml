@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_changepw"
-        android:name="com.example.bookingapp.ui.changepassword.ChangPassword"
+        android:name="com.example.bookingapp.ui.changepassword.ChangePassword"
         android:label="Change Password"
         tools:layout="@layout/fragment_chang_password" />
 </navigation>
