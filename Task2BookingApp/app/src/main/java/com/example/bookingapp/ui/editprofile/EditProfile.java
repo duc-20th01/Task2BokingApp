@@ -28,12 +28,12 @@ public class EditProfile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_edit_profile, container, false);
-        spinnerDanhSach = (Spinner) root.findViewById(R.id.spDoiTuong);
+        /*spinnerDanhSach = (Spinner) root.findViewById(R.id.spDoiTuong);
         ArrayList<String> list =new ArrayList<>();
         list.add("Công Ty");
         list.add("Nhà trường");
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_list_item,list);
-        spinnerDanhSach.setAdapter(adapter);
+        spinnerDanhSach.setAdapter(adapter);*/
         return root;
 
     }
