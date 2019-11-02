@@ -11,24 +11,24 @@ import android.view.ViewGroup;
 
 import com.example.bookingapp.R;
 
-public class ChangPassword extends Fragment {
+public class ChangePassword extends Fragment {
 
-    private ChangPasswordViewModel mViewModel;
+    private ChangePasswordViewModel mViewModel;
 
-    public static ChangPassword newInstance() {
-        return new ChangPassword();
+    public static ChangePassword newInstance() {
+        return new ChangePassword();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chang_password, container, false);
+        return inflater.inflate(R.layout.fragment_change_password, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ChangPasswordViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(ChangePasswordViewModel.class);
         // TODO: Use the ViewModel
     }
 

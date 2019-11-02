@@ -30,4 +30,14 @@
     <string name="change_password">Change Password</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="personal_post">Personal Post</string>
+
+    <!--ChangePwd-->
+    <string name="button_change">Change</string>
+    <string name="button_home">Home</string>
+    <string name="label_change_pwd">Change your password</string>
+    <string name="hint_enter_current_pwd">Enter your current password</string>
+    <string name="hint_enter_new_pwd">Enter new password</string>
+    <string name="hint_confirm_pwd">Enter password again</string>
+    <!--ChangePwd-->
+
 </resources>
