@@ -13,6 +13,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
+
+import com.example.bookingapp.model.Member;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Member mb = (Member) getIntent().getSerializableExtra("key");
+        Toast.makeText(this, mb.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

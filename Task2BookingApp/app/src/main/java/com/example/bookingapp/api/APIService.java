@@ -1,5 +1,6 @@
 package com.example.bookingapp.api;
 
+import com.example.bookingapp.model.Member;
 import com.example.bookingapp.model.Post;
 
 import java.util.ArrayList;
@@ -16,6 +17,9 @@ public interface APIService {
 
     @POST("post/add")
     Call<String> add(@Body Post post);
+
+    @POST("member/login")
+    Call<Member> login(@Body Member member);
 
     @GET("post/list")
     Call<ArrayList<Post>> getAll();
