@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -18,11 +19,13 @@ import com.example.bookingapp.R;
 
 import java.util.ArrayList;
 
+
+
 public class EditProfile extends Fragment {
 
     private EditProfileViewModel mViewModel;
     private Spinner spinnerDanhSach;
-    private RadioButton btTruong,btCongTy;
+
 
     public static EditProfile newInstance() {
         return new EditProfile();
@@ -31,18 +34,37 @@ public class EditProfile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_edit_profile, container, false);
-        btTruong = (RadioButton) root.findViewById(R.id.rbTruong);
-        btCongTy = (RadioButton) root.findViewById(R.id.rbCongTy);
-        btTruong.setChecked(true);
-        if(btTruong.isChecked()==true){
-            Toast.makeText(getActivity(), "Truong", Toast.LENGTH_SHORT).show();
-            btTruong.setChecked(false);
-            btCongTy.setChecked(true);
-        }
-        else {
-            Toast.makeText(getActivity(), "Deo phai r", Toast.LENGTH_SHORT).show();
-        }
+        spinnerDanhSach = (Spinner)root.findViewById(R.id.spDoiTuong);
+        /*ArrayList<String> list = new ArrayList<>();
+        list.add("School");
+        list.add("company");*/
+        final String list[] = {"School","Company"};
+        int a=1;
+        if (a==1){
+            String test = "School";
+            list[0] = list[1];
+            list[1] = test;
+        }else {
 
+        }
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(),R.layout.spinner_list_item,list);
+        spinnerDanhSach.setAdapter(adapter);
+        spinnerDanhSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(list[i].equals("School")){
+                    Toast.makeText(getActivity(), "0", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getActivity(), "1", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         return root;
 
     }
