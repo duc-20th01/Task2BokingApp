@@ -23,7 +23,13 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.example.bookingapp.Rigister" />
+        <activity android:name="com.example.bookingapp.Rigister" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.example.bookingapp.Login"></activity>
         <activity android:name="com.example.bookingapp.NewPostActivity"/>
     </application>
