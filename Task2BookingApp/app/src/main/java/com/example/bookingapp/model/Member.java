@@ -38,6 +38,13 @@ public class Member implements Serializable {
     public Member() {
     }
 
+    public Member(int id, String name, String address, String phone, int type){
+        this.id=id;
+        this.name=name;
+        this.address=address;
+        this.phone=phone;
+        this.type=type;
+    }
     public int getId() {
         return id;
     }

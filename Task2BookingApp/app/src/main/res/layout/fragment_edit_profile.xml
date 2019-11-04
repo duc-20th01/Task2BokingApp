@@ -8,17 +8,17 @@
     tools:context=".ui.editprofile.EditProfile">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="83dp"
         android:layout_marginEnd="29dp"
-        android:text="Lưu cập nhật"
+        android:text="Save"
         app:layout_constraintEnd_toEndOf="@+id/spDoiTuong"
-        app:layout_constraintTop_toBottomOf="@+id/txtname" />
+        app:layout_constraintTop_toBottomOf="@+id/edPhone" />
 
     <EditText
-        android:id="@+id/txtemail"
+        android:id="@+id/edName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtpassword"
+        android:id="@+id/edAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -39,10 +39,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtemail" />
+        app:layout_constraintTop_toBottomOf="@+id/edName" />
 
     <EditText
-        android:id="@+id/txtname"
+        android:id="@+id/edPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -51,7 +51,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/edAddress" />
 
     <Spinner
         android:id="@+id/spDoiTuong"
@@ -60,10 +60,10 @@
         android:layout_marginTop="71dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="59dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/btSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/txtname" />
+        app:layout_constraintTop_toTopOf="@+id/edPhone" />
 
     <TextView
         android:id="@+id/textView4"
@@ -72,7 +72,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="5dp"
-        android:text="Đối tượng"
+        android:text="Object"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/spDoiTuong"
         app:layout_constraintStart_toStartOf="parent"

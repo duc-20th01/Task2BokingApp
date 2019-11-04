@@ -33,4 +33,6 @@ public interface APIService {
     @DELETE("post/delete")
     Call<String> delete(@Query("id") int id);
 
+    @PUT("member/editProfile")
+    Call<String> updateMember(@Body Member member);
 }
