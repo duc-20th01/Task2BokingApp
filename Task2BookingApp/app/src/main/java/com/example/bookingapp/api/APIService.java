@@ -35,4 +35,7 @@ public interface APIService {
 
     @PUT("member/editProfile")
     Call<String> updateMember(@Body Member member);
+
+    @GET("member/login")
+    Call<ArrayList<Member>> getAllDataMember();
 }
