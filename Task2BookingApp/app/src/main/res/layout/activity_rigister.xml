@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Rigister">
+    tools:context=".Register">
 
     <EditText
         android:id="@+id/txtemail"
@@ -13,7 +13,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Enter your email:"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtname" />
@@ -74,6 +74,7 @@
         android:ems="10"
         android:hint="Enter your company/school phone number:"
         android:inputType="phone"
+        android:maxLength="11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtaddress" />

@@ -19,7 +19,7 @@
 
 
         </activity>
-        <activity android:name="com.example.bookingapp.Rigister" >
+        <activity android:name="com.example.bookingapp.Register" >
 
         </activity>
         <activity android:name="com.example.bookingapp.Login">

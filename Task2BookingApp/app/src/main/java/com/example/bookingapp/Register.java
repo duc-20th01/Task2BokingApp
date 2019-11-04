@@ -3,7 +3,9 @@ package com.example.bookingapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Rigister extends AppCompatActivity {
+public class Register extends AppCompatActivity {
     private EditText txtname;
     private EditText txtemail;
     private EditText txtpassword;
@@ -59,20 +61,41 @@ public class Rigister extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 member = new Member();
-                member.setName(txtname.getText().toString());
-                member.setEmail(txtemail.getText().toString());
-
-                if (txtpassword.getText().length() < 8) {
-                    Toast.makeText(Rigister.this, "Password must be at least 8 characters long.", Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (txtpassword.getText().equals(txtconfirm)) {
-                    member.setPassword(txtpassword.getText().toString());
-                } else{
-                    Toast.makeText(Rigister.this, "Confirm password does not match password field", Toast.LENGTH_SHORT).show();
+                if (txtname.getText().length()==0){
+                    Toast.makeText(Register.this, "Please enter your company/school name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                member.setName(txtname.getText().toString());
+                if (!isValidEmail(txtemail.getText())){
+                    Toast.makeText(Register.this, "Please enter your email correctly!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                member.setEmail(txtemail.getText().toString());
+                if (txtpassword.getText().length() == 0)
+                {
+                    Toast.makeText(Register.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (txtpassword.getText().length() < 8) {
+                    Toast.makeText(Register.this, "Password must be at least 8 characters long.", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (txtconfirm.getText().length() < 8) {
+                    Toast.makeText(Register.this, "Please confirm password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if (txtpassword.getText().toString().equals(txtconfirm.getText().toString()) ){
+                    member.setPassword(txtpassword.getText().toString());
+                } else{
+                    Toast.makeText(Register.this, "Confirm password does not match password field", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (txtaddress.getText().length()==0){
+                    Toast.makeText(Register.this, "Please enter your company/school address!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 member.setAddress(txtaddress.getText().toString());
+                if (txtphone.getText().length()==0 || txtphone.getText().length()<10){
+                    Toast.makeText(Register.this, "Your phone number must be at least 10 digits!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 member.setPhone(txtphone.getText().toString());
                 if (spinner.getSelectedItemId() == 0) {
                     member.setType(0);
@@ -86,7 +109,7 @@ public class Rigister extends AppCompatActivity {
 
                         if (response.body().equals("success")) {
                             Toast.makeText(getApplicationContext(), "You have successfully registered!", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Rigister.this, Login.class);
+                            Intent intent = new Intent(Register.this, Login.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "You have failed registered!", Toast.LENGTH_LONG).show();
@@ -103,6 +126,9 @@ public class Rigister extends AppCompatActivity {
                 });
             }
         });
+    }
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
 }
