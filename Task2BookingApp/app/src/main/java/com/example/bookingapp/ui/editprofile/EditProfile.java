@@ -58,10 +58,11 @@ public class EditProfile extends Fragment {
         phone = (EditText) root.findViewById(R.id.edPhone);
         btSave = (Button)root.findViewById(R.id.btSave);
         apiService = APIUtils.getServer();
+        Member member = (Member) getActivity().getIntent().getSerializableExtra("key");
         /*ArrayList<String> list = new ArrayList<>();
         list.add("School");
         list.add("company");*/
-        mb = setView();
+        mb = setView(member);
         saveall();
         return root;
     }
@@ -71,11 +72,8 @@ public class EditProfile extends Fragment {
             @Override
             public void onClick(View view) {
                 if(checkForChange()==true){
-                    Toast.makeText(getActivity(), "Đã có sự thay đổi", Toast.LENGTH_SHORT).show();
                     update(new Member(mb.getId(),newMember.getName(),newMember.getAddress(),newMember.getPhone(),newMember.getType()));
-                }
-                else {
-                    Toast.makeText(getActivity(), "Không có sự thay đổi", Toast.LENGTH_SHORT).show();
+                    //mb=setView();
                 }
             }
         });
@@ -88,8 +86,8 @@ public class EditProfile extends Fragment {
         // TODO: Use the ViewModel
     }
 
-    public Member setView() {
-        final Member member = (Member) getActivity().getIntent().getSerializableExtra("key");
+    public Member setView(final Member member) {
+
         name.setText(member.getName());
         address.setText(member.getAddress());
         phone.setText(member.getPhone());
@@ -107,10 +105,10 @@ public class EditProfile extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(list[i].equals("School")){
-                    member.setType(1);
+                    member.setType(0);
                 }
                 else{
-                    member.setType(0);
+                    member.setType(1);
                 }
             }
 
@@ -126,9 +124,18 @@ public class EditProfile extends Fragment {
         newMember.setAddress(address.getText().toString());
         newMember.setPhone(phone.getText().toString());
         newMember.setType(mb.getType());
-        if(!mb.getName().equals(newMember.getName())||!mb.getAddress().equals(newMember.getAddress())||!mb.getPhone().equals(newMember.getPhone())||tam==newMember.getType()){
-            return true;
+
+        if(!mb.getName().equals(newMember.getName())||!mb.getAddress().equals(newMember.getAddress())||!mb.getPhone().equals(newMember.getPhone())||tam!=newMember.getType()){
+            if(!newMember.getName().equals("")){
+                return true;
+            }
+            else{
+                Toast.makeText(getActivity(), "Không được để trống", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
         }
+        Toast.makeText(getActivity(), "Nội dung không mới", Toast.LENGTH_SHORT).show();
         return false;
     }
     private void update(Member member) {
@@ -140,7 +147,6 @@ public class EditProfile extends Fragment {
                 Log.d("updatemember", response.body());
                 if (response.body().equals("success")) {
                     Toast.makeText(getActivity(), "Update content successfully!", Toast.LENGTH_LONG).show();
-                    setView();
                 } else {
                     Toast.makeText(getActivity(), "Update content failed!", Toast.LENGTH_LONG).show();
                 }
@@ -154,5 +160,4 @@ public class EditProfile extends Fragment {
             }
         });
     }
-
 }
