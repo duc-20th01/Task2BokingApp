@@ -21,6 +21,9 @@ public interface APIService {
     @POST("member/login")
     Call<Member> login(@Body Member member);
 
+    @POST("member")
+    Call<String> rigister(@Body Member member);
+
     @GET("post/list")
     Call<ArrayList<Post>> getAll();
 

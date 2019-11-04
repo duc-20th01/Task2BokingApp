@@ -35,6 +35,9 @@ public class Member implements Serializable {
         this.password=password;
     }
 
+    public Member() {
+    }
+
     public int getId() {
         return id;
     }

@@ -7,7 +7,7 @@
     tools:context=".Rigister">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtemail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
@@ -16,103 +16,89 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtname" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/txtpassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:ems="10"
         android:hint="Password:"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/txtemail" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/txtname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
         android:ems="10"
-        android:hint="Tên công ty / trường:"
+        android:hint="Enter your name company/school:"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/txtaddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:ems="10"
-        android:hint="Địa chỉ của công ty / trường:"
+        android:hint="Enter your address company/school:"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/txtphone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Số điện thoại liên lạc của công ty / trường:"
+        android:hint="Enter your phone number company/school:"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="105dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="99dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/editText5">
-
-        <RadioButton
-            android:id="@+id/radioButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trường" />
-
-        <RadioButton
-            android:id="@+id/radioButton9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Công ty" />
-
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/txtaddress" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="22dp"
-        android:text="Đối tượng"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="41dp"
+        android:text="Object"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup2"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toTopOf="@+id/spinner" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnRigister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="142dp"
         android:text="Đăng ký"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="221dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="223dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 
 </android.support.constraint.ConstraintLayout>
