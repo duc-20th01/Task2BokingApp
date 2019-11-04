@@ -53,5 +53,13 @@
     <string name="hint_enter_description">Enter description</string>
     <string name="hint_enter_quantity">Enter quantity</string>
     <string name="hint_enter_address">Enter address</string>
+    <string name="register">Register</string>
+    <string name="object">Object</string>
+    <string name="enter_your_company_school_name">Enter your company/school name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_your_company_school_phone_number">Enter your company/school phone number</string>
+    <string name="enter_your_company_school_address">Enter your company/school address</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_email">Enter your email</string>
 
 </resources>
