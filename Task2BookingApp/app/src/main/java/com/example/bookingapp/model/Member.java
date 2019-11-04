@@ -45,6 +45,12 @@ public class Member implements Serializable {
         this.phone=phone;
         this.type=type;
     }
+
+    public Member(int id, String password){
+        this.id=id;
+        this.password=password;
+    }
+
     public int getId() {
         return id;
     }

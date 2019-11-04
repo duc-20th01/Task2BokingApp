@@ -35,9 +35,9 @@
     <string name="button_change">Change</string>
     <string name="button_home">Home</string>
     <string name="label_change_pwd">Change your password</string>
-    <string name="hint_enter_current_pwd">Enter your current password</string>
+    <string name="hint_enter_current_pwd">Please enter your current password</string>
     <string name="hint_enter_new_pwd">Enter new password</string>
-    <string name="hint_confirm_pwd">Enter password again</string>
+    <string name="hint_confirm_pwd">Please retype your password</string>
     <!--ChangePwd-->
 
     <!--new post-->

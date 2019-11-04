@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Member mb = (Member) getIntent().getSerializableExtra("key");
-        Toast.makeText(this, mb.getEmail(), Toast.LENGTH_SHORT).show();
+        //Member mb = (Member) getIntent().getSerializableExtra("key");
+        //Toast.makeText(this, mb.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

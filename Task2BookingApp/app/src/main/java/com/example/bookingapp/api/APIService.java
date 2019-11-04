@@ -38,4 +38,8 @@ public interface APIService {
 
     @GET("member/login")
     Call<ArrayList<Member>> getAllDataMember();
+
+    @PUT("member/changePassword")
+    Call<String> changePassWord(@Body Member member);
+
 }
