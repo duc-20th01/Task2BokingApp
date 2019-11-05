@@ -2,7 +2,9 @@ package com.example.bookingapp.ui.editprofile;
 
 import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,10 +41,9 @@ public class EditProfile extends Fragment {
     private Spinner spinnerDanhSach;
     private EditText name,address,phone;
     private Button btSave;
-    private Member mb;
+    private Member mb,newMember = new Member();
     private String list[] = {"School", "Company"};
     private int tam;
-    private Member newMember = new Member();
     private APIService apiService;
 
     public static EditProfile newInstance() {
@@ -62,7 +63,7 @@ public class EditProfile extends Fragment {
         /*ArrayList<String> list = new ArrayList<>();
         list.add("School");
         list.add("company");*/
-        mb = setView(member);
+        mb = setView(loadMemberData());
         saveall();
         return root;
     }
@@ -73,6 +74,7 @@ public class EditProfile extends Fragment {
             public void onClick(View view) {
                 if(checkForChange()==true){
                     update(new Member(mb.getId(),newMember.getName(),newMember.getAddress(),newMember.getPhone(),newMember.getType()));
+                    setMemberData(newMember);
                     //mb=setView();
                 }
             }
@@ -120,13 +122,13 @@ public class EditProfile extends Fragment {
         return member;
     }
     public Boolean checkForChange(){
-        newMember.setName(name.getText().toString());
-        newMember.setAddress(address.getText().toString());
-        newMember.setPhone(phone.getText().toString());
-        newMember.setType(mb.getType());
+        this.newMember.setName(name.getText().toString());
+        this.newMember.setAddress(address.getText().toString());
+        this.newMember.setPhone(phone.getText().toString());
+        this.newMember.setType(mb.getType());
 
         if(!mb.getName().equals(newMember.getName())||!mb.getAddress().equals(newMember.getAddress())||!mb.getPhone().equals(newMember.getPhone())||tam!=newMember.getType()){
-            if(!newMember.getName().equals("")){
+            if(!newMember.getName().equals("")||!newMember.getAddress().equals("")||!newMember.getPhone().equals("")){
                 return true;
             }
             else{
@@ -159,5 +161,24 @@ public class EditProfile extends Fragment {
                 Toast.makeText(getActivity(), "Update content failed! An error has occurred!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+    private Member loadMemberData(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("memberData", Context.MODE_PRIVATE);
+        Member member = new Member();
+        member.setId(sharedPreferences.getInt("id",0));
+        member.setName(sharedPreferences.getString("name","default"));
+        member.setAddress(sharedPreferences.getString("address","default"));
+        member.setPhone(sharedPreferences.getString("phone","default"));
+        member.setType(sharedPreferences.getInt("type",1));
+        return member;
+    }
+    private void setMemberData(Member mb) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("memberData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("name",mb.getName());
+        editor.putString("address",mb.getAddress());
+        editor.putString("phone",mb.getPhone());
+        editor.putInt("type",mb.getType());
+        editor.commit();
     }
 }
