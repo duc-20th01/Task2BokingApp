@@ -132,12 +132,12 @@ public class EditProfile extends Fragment {
                 return true;
             }
             else{
-                Toast.makeText(getActivity(), "Không được để trống", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Do not leave blank", Toast.LENGTH_SHORT).show();
                 return false;
             }
 
         }
-        Toast.makeText(getActivity(), "Nội dung không mới", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Do not have any change", Toast.LENGTH_SHORT).show();
         return false;
     }
     private void update(Member member) {
