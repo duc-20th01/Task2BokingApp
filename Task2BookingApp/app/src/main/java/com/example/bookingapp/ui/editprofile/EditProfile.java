@@ -59,7 +59,7 @@ public class EditProfile extends Fragment {
         phone = (EditText) root.findViewById(R.id.edPhone);
         btSave = (Button)root.findViewById(R.id.btSave);
         apiService = APIUtils.getServer();
-        Member member = (Member) getActivity().getIntent().getSerializableExtra("key");
+        Member member = loadMemberData();
         /*ArrayList<String> list = new ArrayList<>();
         list.add("School");
         list.add("company");*/

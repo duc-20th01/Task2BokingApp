@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        setMemberData();
 
         //Member mb = (Member) getIntent().getSerializableExtra("key");
         //Toast.makeText(this, mb.getEmail(), Toast.LENGTH_SHORT).show();
@@ -60,15 +59,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    private void setMemberData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("memberData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Member mb = (Member) getIntent().getSerializableExtra("key");
-        editor.putInt("id",mb.getId());
-        editor.putString("name",mb.getName());
-        editor.putString("address",mb.getAddress());
-        editor.putString("phone",mb.getPhone());
-        editor.putInt("type",mb.getType());
-        editor.commit();
-    }
+
 }

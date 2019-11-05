@@ -1,7 +1,9 @@
 package com.example.bookingapp.ui.changepassword;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,7 +61,7 @@ public class ChangePassword extends Fragment {
     }
 
     private void addEvent(){
-        mb = (Member) getActivity().getIntent().getSerializableExtra("key");
+        mb = loadMemberData();
         txtCurrentPwd = getView().findViewById(R.id.txtCurrentPwd);
         txtNewPwd = getView().findViewById(R.id.txtNewPwd);
         txtConfirmPwd = getView().findViewById(R.id.txtConfirmPwd);
@@ -157,5 +159,20 @@ public class ChangePassword extends Fragment {
             }
         });
     }
+
+    private Member loadMemberData(){
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("memberData", Context.MODE_PRIVATE);
+        Member member = new Member();
+        member.setId(sharedPreferences.getInt("id",0));
+        member.setName(sharedPreferences.getString("name","default"));
+        member.setEmail(sharedPreferences.getString("email","default"));
+        member.setPassword(sharedPreferences.getString("password","default"));
+        member.setAddress(sharedPreferences.getString("address","default"));
+        member.setPhone(sharedPreferences.getString("phone","default"));
+        member.setType(sharedPreferences.getInt("type",1));
+        return member;
+    }
+
+
 
 }

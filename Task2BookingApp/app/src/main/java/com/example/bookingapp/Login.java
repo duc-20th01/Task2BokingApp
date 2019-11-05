@@ -60,8 +60,17 @@ public class Login extends AppCompatActivity {
                             setRemember();
                             Toast.makeText(Login.this, "Login successfully!", Toast.LENGTH_SHORT).show();
                             Member mb = response.body();
+                            SharedPreferences sharedPreferences = getSharedPreferences("memberData", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("id",mb.getId());
+                            editor.putString("name",mb.getName());
+                            editor.putString("email", mb.getEmail());
+                            editor.putString("password", mb.getPassword());
+                            editor.putString("address",mb.getAddress());
+                            editor.putString("phone",mb.getPhone());
+                            editor.putInt("type",mb.getType());
+                            editor.commit();
                             Intent intent = new Intent(Login.this,MainActivity.class);
-                            intent.putExtra("key",mb);
                             startActivity(intent);
                         }else {
                             Toast.makeText(Login.this, "Email or password you've entered is incorrect!", Toast.LENGTH_SHORT).show();
@@ -83,6 +92,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
         btnexit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
