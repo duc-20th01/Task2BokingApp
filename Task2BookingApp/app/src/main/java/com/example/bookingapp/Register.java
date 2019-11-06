@@ -32,6 +32,7 @@ public class Register extends AppCompatActivity {
     private APIService apiService;
     private Button btnRigister;
     private Member member;
+    private Button bt;
     private String list[] = {"School", "Company"};
 
     @Override
@@ -51,12 +52,20 @@ public class Register extends AppCompatActivity {
         txtaddress = findViewById(R.id.txtaddress);
         txtphone = findViewById(R.id.txtphone);
         apiService = APIUtils.getServer();
+        bt = findViewById(R.id.btt_login);
         btnRigister = findViewById(R.id.btnRigister);
         txtconfirm = findViewById(R.id.con_txtpassword);
         spinner = (Spinner) findViewById(R.id.spinner);
     }
 
     private void addEvents() {
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, Login.class);
+                startActivity(intent);
+            }
+        });
         btnRigister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
