@@ -67,5 +67,6 @@
     <string name="enter_your_company_school_address">Enter your company/school address</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_your_email">Enter your email</string>
+    <string name="booking_app">Booking App</string>
 
 </resources>

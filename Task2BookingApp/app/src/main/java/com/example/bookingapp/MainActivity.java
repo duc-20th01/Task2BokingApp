@@ -14,15 +14,17 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookingapp.model.Member;
 
 public class MainActivity extends AppCompatActivity {
-
     private AppBarConfiguration mAppBarConfiguration;
-
+    private TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        View header = navigationView.getHeaderView(0);
+        SharedPreferences sharedPreferences = getSharedPreferences("memberData", Context.MODE_PRIVATE);
+        TextView text = (TextView) header.findViewById(R.id.tv_emailactive);
+        text.setText(sharedPreferences.getString("email","default"));
 
-        //Member mb = (Member) getIntent().getSerializableExtra("key");
-        //Toast.makeText(this, mb.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
