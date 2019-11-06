@@ -53,6 +53,12 @@
     <string name="hint_enter_description">Enter description</string>
     <string name="hint_enter_quantity">Enter quantity</string>
     <string name="hint_enter_address">Enter address</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_delete">Delete</string>
+    <string name="edit_post">EDIT POST</string>
+    <string name="button_ok">Ok</string>
+
+
     <string name="register">Register</string>
     <string name="object">Object</string>
     <string name="enter_your_company_school_name">Enter your company/school name</string>

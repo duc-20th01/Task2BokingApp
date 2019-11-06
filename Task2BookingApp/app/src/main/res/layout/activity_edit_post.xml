@@ -10,31 +10,31 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_post"
+        android:text="@string/edit_post"
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"/>
-
     <EditText
-        android:id="@+id/txtNewPostName"
+        android:id="@+id/txtEditName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_enter_titile"/>
 
     <EditText
-        android:id="@+id/txtNewPostSkill"
+        android:id="@+id/txtEditSkill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_enter_skill"/>
 
     <EditText
-        android:id="@+id/txtNewPostDescripton"
+        android:id="@+id/txtEditDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_enter_description"/>
 
+
     <EditText
-        android:id="@+id/txtNewPostQuantity"
+        android:id="@+id/txtEditQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_enter_quantity"
@@ -45,12 +45,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/button_add"/>
+            android:text="@string/button_ok"/>
         <Button
             android:id="@+id/btnHome"
             android:layout_width="wrap_content"
