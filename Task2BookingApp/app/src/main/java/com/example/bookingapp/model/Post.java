@@ -1,6 +1,8 @@
 package com.example.bookingapp.model;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
     private int id;
     private String name;
     private String skill;
@@ -10,7 +12,7 @@ public class Post {
     private String createdDate;
     private String authorId;
 
-    public Post() {
+    public Post(){
     }
 
     public Post(String name, String skill, String description, int quantity, String address, String createdDate, String authorId) {

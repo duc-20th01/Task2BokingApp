@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookingapp.api.APIService;
@@ -20,46 +21,44 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewPostActivity extends AppCompatActivity {
-    Button btnAdd, btnHome;
-    EditText txtName, txtSkill, txtQuantity, txtDescription;
+public class EditPostActivity extends AppCompatActivity {
+    Button btnOk, btnHome;
+    EditText txtName, txtSkill, txtDescription, txtQuantity;
+    Post post;
     APIService apiService;
-    Member member;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_post);
-        initControls();
+        setContentView(R.layout.activity_edit_post);
+        init();
         addEvents();
     }
 
     private void addEvents() {
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkValidInput()){
-                    Post post = new Post();
+                if (checkValidInput()) {
                     post.setName(txtName.getText().toString());
                     post.setSkill(txtSkill.getText().toString());
                     post.setDescription(txtDescription.getText().toString());
                     post.setQuantity(Integer.parseInt(txtQuantity.getText().toString()));
-                    post.setAddress(member.getAddress());
-                    post.setAuthorId(member.getEmail());
-                    apiService.add(post).enqueue(new Callback<String>() {
+                    apiService.updatePost(post).enqueue(new Callback<Void>() {
                         @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            if (response.body() == "true"){
-                                Toast.makeText(NewPostActivity.this, "Posting is successful!", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(NewPostActivity.this, "Post failed!", Toast.LENGTH_SHORT).show();
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            switch (response.code()) {
+                                case 200:
+                                    Toast.makeText(EditPostActivity.this, "Update Post Successfully!", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 204:
+                                    Toast.makeText(EditPostActivity.this, "Update Post Failed!", Toast.LENGTH_SHORT).show();
                             }
                         }
                         @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            Log.e("NPE", "onFailure: " + t.getMessage() );
-                            Toast.makeText(NewPostActivity.this, "Post failed!", Toast.LENGTH_SHORT).show();
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Log.e("EPE", "onFailure: " + t.getMessage());
+                            Toast.makeText(EditPostActivity.this, "Update Post Failed!", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -69,34 +68,28 @@ public class NewPostActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewPostActivity.this, MainActivity.class);
+                Intent intent = new Intent(EditPostActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    private void initControls() {
-        btnAdd = findViewById(R.id.btnAdd);
+    private void init() {
+        txtName = findViewById(R.id.txtEditName);
+        txtSkill = findViewById(R.id.txtEditSkill);
+        txtDescription = findViewById(R.id.txtEditDescription);
+        txtQuantity = findViewById(R.id.txtEditQuantity);
+        btnOk = findViewById(R.id.btnOk);
         btnHome = findViewById(R.id.btnHome);
-        txtName = findViewById(R.id.txtNewPostName);
-        txtSkill = findViewById(R.id.txtNewPostSkill);
-        txtDescription = findViewById(R.id.txtNewPostDescripton);
-        txtQuantity = findViewById(R.id.txtNewPostQuantity);
-        apiService = APIUtils.getServer();
-        loadMemberData();
-    }
 
-    private Member loadMemberData(){
-        SharedPreferences sharedPreferences = getSharedPreferences("memberData", Context.MODE_PRIVATE);
-        member = new Member();
-        member.setId(sharedPreferences.getInt("id",0));
-        member.setName(sharedPreferences.getString("name",""));
-        member.setEmail(sharedPreferences.getString("email",""));
-        member.setPassword(sharedPreferences.getString("password",""));
-        member.setAddress(sharedPreferences.getString("address",""));
-        member.setPhone(sharedPreferences.getString("phone",""));
-        member.setType(sharedPreferences.getInt("type",1));
-        return member;
+        post = (Post) getIntent().getSerializableExtra("edit_post");
+        txtName.setText(post.getName());
+        txtSkill.setText(post.getSkill());
+        txtDescription.setText(post.getDescription());
+        txtQuantity.setText(String.valueOf(post.getQuantity()));
+
+        apiService = APIUtils.getServer();
+
     }
 
     private boolean checkValidInput(){
@@ -116,4 +109,5 @@ public class NewPostActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }

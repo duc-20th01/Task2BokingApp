@@ -25,13 +25,13 @@ public interface APIService {
     Call<String> rigister(@Body Member member);
 
     @GET("post/list")
-    Call<ArrayList<Post>> getAll();
+    Call<ArrayList<Post>> getAll(@Query("id") String id);
 
     @PUT("post/update")
-    Call<String> update(@Body Post post);
+    Call<Void> updatePost(@Body Post post);
 
     @DELETE("post/delete")
-    Call<String> delete(@Query("id") int id);
+    Call<Void> delete(@Query("id") int id);
 
     @PUT("member/editProfile")
     Call<String> updateMember(@Body Member member);
