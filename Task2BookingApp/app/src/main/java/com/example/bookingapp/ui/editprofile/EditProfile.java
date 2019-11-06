@@ -128,12 +128,18 @@ public class EditProfile extends Fragment {
         this.newMember.setType(mb.getType());
 
         if(!mb.getName().equals(newMember.getName())||!mb.getAddress().equals(newMember.getAddress())||!mb.getPhone().equals(newMember.getPhone())||tam!=newMember.getType()){
-            if(newMember.getName().isEmpty()||newMember.getAddress().isEmpty()||newMember.getPhone().isEmpty()){//!newMember.getName().equals("")||!newMember.getAddress().equals("")||!newMember.getPhone().equals("")){
+            if(newMember.getName().isEmpty()||newMember.getAddress().isEmpty()){//!newMember.getName().equals("")||!newMember.getAddress().equals("")||!newMember.getPhone().equals("")){
                 Toast.makeText(getActivity(), "Do not leave blank", Toast.LENGTH_SHORT).show();
                 return false;
             }
             else{
-                return true;
+                if (newMember.getPhone().length()==10){
+                    return true;
+                }
+                else{
+                    Toast.makeText(getActivity(), "New phonenumber must contain at least 10 numbers!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
 
         }
